@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <!-- default属性の設定は、接続先が1つだけの場合でも必須 -->
+    <environments default="Derby">
+        <!-- Derby用 -->
+        <environment id="Derby">
+            <transactionManager type="MANAGED" />
+            <dataSource type="JNDI">
+                <property name="data_source" value="java:comp/env/jdbc/tutorial"/>
+            </dataSource>
+        </environment>
+        <!-- Oracle用 -->
+        <environment id="Oracle">
+            <transactionManager type="MANAGED" />
+            <dataSource type="JNDI">
+                <property name="data_source" value="java:/OracleDS"/>
+            </dataSource>
+        </environment>
+        <!-- PostgreSQL用 -->
+        <environment id="PostgreSQL">
+            <transactionManager type="MANAGED" />
+            <dataSource type="JNDI">
+                <property name="data_source" value="java:/PostgresDS"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="examples/sqlmap/maps/Book.xml" />
+    </mappers>
+</configuration>
